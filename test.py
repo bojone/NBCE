@@ -10,6 +10,7 @@ from transformers import AutoTokenizer
 from transformers import LlamaForCausalLM
 
 # 经过微调的LLAMA
+# 下载地址：https://openbuddy.ai/
 model_path = '/root/autodl-tmp/7b-trans-chat-0516-bf16'
 
 # 加载tokenizer
