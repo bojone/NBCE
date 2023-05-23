@@ -74,7 +74,9 @@ def generate(max_tokens):
         # ===== 核心代码结束 =====
         
         # 构建分布，采样
-        tau = 0.01  # tau = 1是标准的随机采样，tau->0则是贪心搜索
+        # tau = 1是标准的随机采样，tau->0则是贪心搜索
+        # 简单起见，这里没有实现topk、topp截断
+        tau = 0.01
         probas = torch.nn.functional.softmax(logits[None] / tau , dim=-1)
         next_tokens = torch.multinomial(probas, num_samples=1).squeeze(1)        
         if next_tokens[0] == tokenizer.eos_token_id:
