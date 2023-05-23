@@ -4,6 +4,7 @@
 ## 简介
 
 基于朴素贝叶斯所启发的公式：
+
 <img src="https://raw.githubusercontent.com/bojone/NBCE/main/NBCE.png" width=600>
 
 细节请看博客：https://kexue.fm/archives/9617
