@@ -9,6 +9,8 @@
 
 细节请看博客：https://kexue.fm/archives/9617
 
+Demo所用模型：https://openbuddy.ai/
+
 ## 特点
 - 即插即用
 - 模型无关
