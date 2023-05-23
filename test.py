@@ -2,6 +2,7 @@
 # Naive Bayes-based Context Extension (NBCE)
 # 使用朴素贝叶斯增加LLM的Context处理长度
 # 链接：https://kexue.fm/archives/9617
+# Torch 2.0 测试通过
 
 import json
 import torch
