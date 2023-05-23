@@ -64,13 +64,13 @@ def generate(max_tokens):
         past_key_values = outputs.past_key_values
         
         # ===== 核心代码开始 =====
-        r = 0.25
+        beta = 0.25
         probas = torch.nn.functional.softmax(outputs.logits[:, -1], dim=-1)
         logits = probas.log()
         k = (probas * logits).sum(dim=-1)[1:].argmax() + 1
         logits_max = logits[k]
         logits_uncond = logits[0]
-        logits = (1 + r) * logits_max - r * logits_uncond
+        logits = (1 + beta) * logits_max - beta * logits_uncond
         # ===== 核心代码结束 =====
         
         # 构建分布，采样
