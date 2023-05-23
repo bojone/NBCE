@@ -1,12 +1,20 @@
 # Naive Bayes-based Context Extension
 使用朴素贝叶斯思想来扩展LLM的Context处理长度
 
+## 简介
+
+基于朴素贝叶斯所启发的公式：
+<img src="https://raw.githubusercontent.com/bojone/NBCE/main/NBCE.png" width=600>
+
+细节请看博客：https://kexue.fm/archives/9617
+
 ## 特点
+- 即插即用
 - 模型无关
 - 不用微调
 - 线性效率
 - 实现简单
-- 效果不错
+- 效果尚可
 - 可解释性
 
 ## 引用
