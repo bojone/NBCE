@@ -1,5 +1,5 @@
 # Naive Bayes-based Context Extension
-使用朴素贝叶斯思想来扩展LLM的Context处理长度
+使用朴素贝叶斯思想来扩展LLM的Context处理长度。现在，任何LLM都可以套上NBCE来处理任意长的Context（只要算力足够）！
 
 ## 简介
 
