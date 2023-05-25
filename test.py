@@ -68,7 +68,7 @@ def generate(max_tokens):
         # ===== 核心代码开始 =====
         beta = 0.25
         probas = torch.nn.functional.softmax(outputs.logits[:, -1], dim=-1)
-        logits = probas.log()
+        logits = probas.clip(1e-5, 1).log()
         k = (probas * logits).sum(dim=-1)[1:].argmax() + 1
         logits_max = logits[k]
         logits_uncond = logits[0]
@@ -94,3 +94,32 @@ def generate(max_tokens):
 
 if __name__ == '__main__':
     generate(1000)
+
+
+"""
+========= 输出结果参考 =========
+
+1.菲律宾国家电网公司，中国占股多少？
+答：中国国家电网公司持有菲律宾国家电网公司40%的股份。
+
+2.领英计划裁员多少人？
+答：领英计划裁员716人。
+
+3.吉利德收购Pharmasset的价格是多少？
+答：吉利德收购Pharmasset的价格为110亿美元。
+
+4.丙肝神药Sovaldi在哪一年上市？
+答：丙肝神药Sovaldi于2013年上市。
+
+5.中亚峰会将在哪里举行？由谁主持？
+答：中亚峰会将在陕西省西安市举行，由国家主席习近平主持。
+
+6.哪个演员由于侮辱人民军队而被立案调查？
+答：李昊石因在表演中存在侮辱人民军队的言论而被立案调查。
+
+7.哪个项目宣称“能过坦克”的水上道路？
+答：湖北恩施宣称的“能过坦克”水上道路。
+
+8.如果你是默沙东的CEO，你的首要任务是什么？
+答：如果我是默沙东的CEO，我的首要任务是如何让基本盘更加坚固，并通过药物联用获得更好的增长。
+"""
