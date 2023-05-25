@@ -67,9 +67,9 @@ def generate(max_tokens):
         
         # ===== 核心代码开始 =====
         beta = 0.25
-        probas = torch.nn.functional.softmax(outputs.logits[:, -1], dim=-1)
-        logits = probas.clip(1e-5, 1).log()
-        k = (probas * logits).sum(dim=-1)[1:].argmax() + 1
+        logits = outputs.logits[:, -1]
+        logits = logits - logits.logsumexp(dim=-1, keepdims=True)
+        k = (logits.exp() * logits).sum(dim=-1)[1:].argmax() + 1
         logits_max = logits[k]
         logits_uncond = logits[0]
         logits = (1 + beta) * logits_max - beta * logits_uncond
