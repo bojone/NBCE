@@ -3,7 +3,7 @@
 
 现在，任何LLM都可以利用NBCE成为可以处理任意长Context的模型了（只要算力足够）！
 
-<img src="https://raw.githubusercontent.com/bojone/NBCE/main/NBCE2.png" width=600>
+<img src="https://raw.githubusercontent.com/bojone/NBCE/34601ad70eb1bdae50a026234b8980da275df775/NBCE2.png" width=600>
 
 ## 简介
 
