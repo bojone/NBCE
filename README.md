@@ -1,3 +1,5 @@
+[中文|[English](https://github.com/bojone/NBCE/blob/main/README_en.md)]
+
 # Naive Bayes-based Context Extension
 使用朴素贝叶斯思想来扩展LLM的Context处理长度。
 
