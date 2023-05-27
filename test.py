@@ -8,6 +8,7 @@ import json
 import torch
 from transformers import AutoTokenizer
 from transformers import LlamaForCausalLM
+from transformers import TopPLogitsWarper, LogitsProcessorList
 
 # 经过微调的LLAMA
 # 下载地址：https://openbuddy.ai/
@@ -42,6 +43,10 @@ batch = ['User: %s\n\n%s\n\nAssistant:' % (context, question) for context in con
 print('Context长度分布：', [len(text) for text in batch])
 print('Context总长度：', sum([len(text) for text in batch]))
 
+# Top-P截断
+processors = LogitsProcessorList()
+processors.append(TopPLogitsWarper(0.95))
+
 
 @torch.inference_mode()
 def generate(max_tokens):
@@ -69,10 +74,12 @@ def generate(max_tokens):
         beta = 0.25
         logits = outputs.logits[:, -1]
         logits = logits - logits.logsumexp(dim=-1, keepdims=True)
-        k = (logits.exp() * logits).sum(dim=-1)[1:].argmax() + 1
+        logits = processors(input_ids, logits)
+        k = (logits.exp() * logits.clip(-100, 0)).sum(dim=-1)[1:].argmax() + 1
         logits_max = logits[k]
         logits_uncond = logits[0]
-        logits = (1 + beta) * logits_max - beta * logits_uncond
+        logits_merged = (1 + beta) * logits_max - beta * logits_uncond
+        logits = torch.where(logits_uncond > -100, logits_merged, logits_max)
         # ===== 核心代码结束 =====
         
         # 构建分布，采样
