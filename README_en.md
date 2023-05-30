@@ -17,7 +17,7 @@ For details, please refer to the blog: https://kexue.fm/archives/9617
 
 Demo model used: https://openbuddy.ai/
 
-**Latest test results**: Under 8*A800, the 7B model can handle **50k** context and perform reading comprehension accurately.
+**Latest test results**: Under 8*A800, the 7B model can handle **50k** context and perform reading comprehension accurately. (Not all GPUs are used up, about 160G video memory is consumed)
 
 ## Features
 - Plug and play
