@@ -71,11 +71,14 @@ def generate(max_tokens):
         past_key_values = outputs.past_key_values
         
         # ===== 核心代码开始 =====
-        beta = 0.25
+        beta, eta = 0.25, 0.1
         logits = outputs.logits[:, -1]
         logits = logits - logits.logsumexp(dim=-1, keepdims=True)
         logits = processors(input_ids, logits)
-        k = (logits.exp() * logits.clip(-100, 0)).sum(dim=-1)[1:].argmax() + 1
+        entropy = -(logits.exp() * logits.clip(-100, 0)).sum(dim=-1)
+        if i > 0:
+            entropy[k] -= eta
+        k = entropy[1:].argmin() + 1
         logits_max = logits[k]
         logits_uncond = logits[0]
         logits_merged = (1 + beta) * logits_max - beta * logits_uncond
