@@ -31,11 +31,27 @@
 ## 引用
 
 ```
-@misc{nbce2023,
-  title={Naive Bayes-based Context Extension},
-  author={Jianlin Su},
-  year={2023},
-  howpublished={\url{https://github.com/bojone/NBCE}},
+@inproceedings{nbce_naacl,
+  author       = {Jianlin Su and
+                  Murtadha Ahmed and
+                  Bo Wen and
+                  Luo Ao and
+                  Mingren Zhu and
+                  Yunfeng Liu},
+  editor       = {Kevin Duh and
+                  Helena G{\'{o}}mez{-}Adorno and
+                  Steven Bethard},
+  title        = {Naive Bayes-based Context Extension for Large Language Models},
+  booktitle    = {Proceedings of the 2024 Conference of the North American Chapter of
+                  the Association for Computational Linguistics: Human Language Technologies
+                  (Volume 1: Long Papers), {NAACL} 2024, Mexico City, Mexico, June 16-21,
+                  2024},
+  pages        = {7791--7807},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2024},
+  url          = {https://doi.org/10.18653/v1/2024.naacl-long.431},
+  doi          = {10.18653/V1/2024.NAACL-LONG.431},
+  timestamp    = {Thu, 29 Aug 2024 17:13:57 +0200},
 }
 ```
 ## 交流
